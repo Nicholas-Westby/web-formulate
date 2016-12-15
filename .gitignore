@@ -3,3 +3,9 @@
 bin/
 obj/
 *.csproj.user
+**/App_Data/Logs/
+**/App_Data/TEMP/ClientDependency/
+**/App_Data/TEMP/DistCache/
+**/App_Data/TEMP/ExamineIndexes/
+**/App_Data/TEMP/PluginCache/
+**/App_Data/umbraco.config
