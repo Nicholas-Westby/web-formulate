@@ -426,6 +426,9 @@
   <ItemGroup>
     <Content Include="Config\404handlers.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="masterpages\Home.master" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
