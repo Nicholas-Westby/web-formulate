@@ -1,6 +1,28 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+<%@ Register TagPrefix="frm" TagName="Render" Src="~/UserControls/RenderFormulateForm.ascx" %>
+
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server"><!doctype html>
+
+<script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+        // Variables.
+        var context = Umbraco.Web.UmbracoContext.Current;
+        var content = context.PublishedContentRequest.PublishedContent;
+
+        // Get a view model for the picked form.
+        var pickedForm = Umbraco.Web.PublishedContentExtensions
+            .GetPropertyValue<formulate.app.Types.ConfiguredFormInfo>(content, "contactForm");
+        var vm = formulate.api.Rendering.GetFormViewModel(pickedForm.FormId, pickedForm.LayoutId,
+            pickedForm.TemplateId, content);
+
+        // Pass form model to user control.
+        formRenderer.FormModel = vm;
+
+    }
+</script>
 
 <html>
 <head>
@@ -45,7 +67,7 @@
         <!-- Display the form. -->
         <div ng-if="status !== 'success'">
             <div class="container">
-                
+                <frm:Render ID="formRenderer" runat="server" Stuff="Yep" />
             </div>
         </div>
 
